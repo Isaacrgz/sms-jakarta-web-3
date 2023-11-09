@@ -1,5 +1,7 @@
 package mx.com.jakartaEE.sms.service;
 
+import jakarta.annotation.Resource;
+import jakarta.ejb.SessionContext;
 import jakarta.ejb.Stateless;
 import java.util.List;
 import mx.com.jakartaEE.sms.data.PersonDao;
@@ -9,12 +11,15 @@ import jakarta.inject.Inject;
 @Stateless
 public class PersonServiceImpl implements PersonServiceRemote, PersonService {
 
+    @Resource
+    private SessionContext contexto;
+    
     @Inject
     private PersonDao personDao;
     
+    
     @Override
-    public List<Person> listPerson() {
-        
+    public List<Person> listPerson () {
         return personDao.findAllPeople();
     }
 
@@ -35,7 +40,12 @@ public class PersonServiceImpl implements PersonServiceRemote, PersonService {
 
     @Override
     public void modifyPerson(Person person) {
-        personDao.updatePerson(person);
+        try {
+            personDao.updatePerson(person);
+        } catch (Throwable t) {
+            contexto.setRollbackOnly();
+            t.printStackTrace(System.out);
+        }
     }
 
     @Override

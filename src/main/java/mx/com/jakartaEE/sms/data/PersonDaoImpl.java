@@ -8,7 +8,7 @@ import mx.com.jakartaEE.sms.domain.Person;
 @Stateless
 public class PersonDaoImpl implements PersonDao {
     
-    @PersistenceContext(unitName = "PersonPU")
+    @PersistenceContext(unitName = "SgaPU")
     EntityManager em;
 
     @Override

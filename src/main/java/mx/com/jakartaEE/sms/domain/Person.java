@@ -29,7 +29,7 @@ public class Person implements Serializable {
     @Basic(optional = false)
     @Size(max = 45)
     private String name;
-    @Size(max = 45)
+    //@Size(max = 45)
     private String lastname;
     @Size(max = 45)
     private String email;

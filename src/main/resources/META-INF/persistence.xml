@@ -5,12 +5,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence 
                         https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
-    <!-- Define Persistence Unit -->
+<!--    Define Persistence Unit -->
 <!--    Esta parte esta comentada porque es solo para Servidor, NO LOCAL-->
-<!--    <persistence-unit name="PersonPU" transaction-type="JTA">-->
-<!--        <jta-data-source>jdbc/PersonDb</jta-data-source>-->
+    <persistence-unit name="SgaPU" transaction-type="JTA">
+        <jta-data-source>jdbc/PersonDb</jta-data-source>
+        <properties>
+            <property name="eclipselink.logging.level.sql" value="FINE" />
+            <property name="eclipselink.loggin.parameters" value="true" />
+        </properties>
+    </persistence-unit>
+    
 <!--    Esta parte esta comentada porque es solo para Local, NO SERVER-->
-    <persistence-unit name="SgaPU" transaction-type="RESOURCE_LOCAL">
+<!--    <persistence-unit name="SgaPU" transaction-type="RESOURCE_LOCAL">
         <class>mx.com.jakartaEE.sms.domain.User</class> 
         <class>mx.com.jakartaEE.sms.domain.Person</class> 
         <properties>
@@ -21,5 +27,5 @@
             <property name="eclipselink.logging.level.sql" value="FINE" />
             <property name="eclipselink.loggin.parameters" value="true" />
         </properties>
-    </persistence-unit>
+    </persistence-unit>-->
 </persistence>

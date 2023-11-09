@@ -9,7 +9,7 @@ import java.util.List;
 import mx.com.jakartaEE.sms.domain.User;
 import mx.com.jakartaEE.sms.service.UserService;
 
-@WebServlet("/User")
+@WebServlet("/Users")
 public class UserServlet extends HttpServlet{
     @Inject
     UserService userService;
@@ -19,6 +19,6 @@ public class UserServlet extends HttpServlet{
         List<User> users = userService.listUser();
         System.out.println("Users:" + users);
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/listadoUsuarios.jsp").forward(request, response);
+        request.getRequestDispatcher("/listUsers.jsp").forward(request, response);
     }
 }
