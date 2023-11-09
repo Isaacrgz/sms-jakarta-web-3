@@ -2,7 +2,7 @@ package mx.com.jakartaEE.sms.client;
 
 import java.util.Iterator;
 import java.util.List;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import mx.com.jakartaEE.sms.domain.Person;
 import mx.com.jakartaEE.sms.domain.User;
 import org.apache.logging.log4j.LogManager;
