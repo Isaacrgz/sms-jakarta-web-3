@@ -35,7 +35,14 @@ public class PersonServiceImpl implements PersonServiceRemote, PersonService {
 
     @Override
     public void addPerson(Person person) {
-        personDao.insertPerson(person);
+        try {
+            personDao.insertPerson(person);
+        } catch (Throwable t) {
+            contexto.setRollbackOnly();
+            t.printStackTrace(System.out);
+        }
+            
+        
     }
 
     @Override
@@ -50,7 +57,13 @@ public class PersonServiceImpl implements PersonServiceRemote, PersonService {
 
     @Override
     public void deletePerson(Person person) {
-        personDao.deletePerson(person);
+        try {
+            personDao.deletePerson(person);
+        } catch (Throwable t) {
+            contexto.setRollbackOnly();
+            t.printStackTrace(System.out);
+        }
+        
     }
     
 }
